@@ -27,6 +27,21 @@ export default class HistoricoVendas {
         });
     }
 
+    static async maisVendidos() {
+        return new Promise((resolve, reject) => {
+            db.transaction(
+                tx => {
+                    tx.executeSql(
+                        'SELECT produto_id, SUM(quantidade) as quantidade FROM tb_historico_3 GROUP BY produto_id;',
+                        [],
+                        (_, { rows }) => resolve(rows._array),
+                        (_, error) => reject(error)
+                    );
+                }
+            );
+        });
+    }
+
     static async adicionar(produto_id, quantidade, venda_id) {
         return new Promise((resolve, reject) => {
             // console.log(produto_id, quantidade, venda_id)
