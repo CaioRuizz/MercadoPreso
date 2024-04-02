@@ -16,6 +16,11 @@ export default function Home ({ navigation }) {
                 navigateToPage="VendedorHome"
                 title="Entrar Como Vendedor"
             />
+            <NavigateButton
+                navigation={navigation}
+                navigateToPage="Extra"
+                title="Ver Itens Mais Vendidos"
+            />
         </View>
     )
 }

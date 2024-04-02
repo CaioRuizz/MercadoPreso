@@ -43,7 +43,7 @@ export default function ListaVendas() {
         loadVendas();
     }, []);
 
-    count = 0;
+    let count = 0;
 
     return (
         <>

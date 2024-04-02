@@ -8,6 +8,7 @@ import ListarProdutos from "./pages/listar-produtos";
 import ListarVendas from "./pages/listar-vendas";
 import VerCarrinho from "./pages/ver-carrinho";
 import GerenciarCategorias from "./pages/gerenciar-categorias";
+import MaisVendidos from "./pages/mais-vendidos";
 
 const Stack = createNativeStackNavigator();
 
@@ -54,6 +55,11 @@ export default function Router() {
                     name="VerVendas"
                     component={ListarVendas}
                     options={{ title: 'Mercado Preso - Vendedor' }}
+                />
+                <Stack.Screen
+                    name="Extra"
+                    component={MaisVendidos}
+                    options={{ title: 'Mercado Preso - Extra' }}
                 />
             </Stack.Navigator>
         </NavigationContainer>
