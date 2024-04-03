@@ -4,6 +4,7 @@ import { Picker } from '@react-native-picker/picker';
 import Produto from '../../models/produto';
 import styles from './styles';
 import Categoria from '../../models/categoria';
+import Cell from "../../components/cell";
 
 export default function GerenciarProdutos() {
   const [categorias, setCategorias] = useState([]);
@@ -113,11 +114,7 @@ export default function GerenciarProdutos() {
         data={produtos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.item}>
-            <Text>{item.descricao} - R$ {item.precoUnitario  ?? item.preco} - {item.categoria}</Text>
-            <Button title="🖊" onPress={() => handleEditar(item)} />
-            <Button title="❌" onPress={() => handleRemover(item.id)} />
-          </View>
+          <Cell text={item.descricao +" - R$ " + (item.precoUnitario ?? item.preco) +" - "+item.categoria} handleEditar={handleEditar} handleRemover={handleRemover} />
         )}
       />
     </View>
