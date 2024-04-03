@@ -34,7 +34,8 @@ export default function ListaVendas() {
                 if (!vendasComProdutos[v.venda_id]) {
                     vendasComProdutos[v.venda_id] = [];
                 }
-                vendasComProdutos[v.venda_id].push({ produto, quantidade: v.quantidade });
+                console.log('preco: '+v.preco)
+                vendasComProdutos[v.venda_id].push({ produto, quantidade: v.quantidade, preco: v.preco*v.quantidade });
             }
 
             console.log(vendasComProdutos);
@@ -56,7 +57,7 @@ export default function ListaVendas() {
                                 data={vendas[vendaId]}
                                 keyExtractor={() => (i + 2) ** ++count}
                                 renderItem={({ item }) => (
-                                    <Text>Produto: {item.produto.descricao} Quantidade: {item.quantidade}</Text>
+                                    <Text>Produto: {item.produto.descricao} Quantidade: {item.quantidade} Preço: {item.preco}</Text>
                                 )}
                             />
                         </View>

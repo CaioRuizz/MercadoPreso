@@ -9,7 +9,7 @@ export default function VendedorHome ({ navigation }) {
             <NavigateButton
                 navigation={navigation}
                 navigateToPage="AdicionarProdutos"
-                title="Adicionar Produtos"
+                title="Itens à venda"
             />
             <NavigateButton
                 navigation={navigation}

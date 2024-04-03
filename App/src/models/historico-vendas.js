@@ -1,6 +1,6 @@
 import * as SQLite from 'expo-sqlite';
 
-const db = SQLite.openDatabase('db.tb_historico_3');
+const db = SQLite.openDatabase('db.tb_historico_4');
 
 export default class HistoricoVendas {
     id
@@ -17,7 +17,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'CREATE TABLE IF NOT EXISTS tb_historico_3 (id INTEGER PRIMARY KEY AUTOINCREMENT, produto_id INTEGER, quantidade INTEGER, venda_id TEXT);',
+                        'CREATE TABLE IF NOT EXISTS tb_historico_4 (id INTEGER PRIMARY KEY AUTOINCREMENT, produto_id INTEGER, quantidade INTEGER, venda_id TEXT);',
                         [],
                         (_, { rowsAffected }) => resolve(rowsAffected),
                         (_, error) => reject(error)
@@ -32,7 +32,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'SELECT produto_id, SUM(quantidade) as quantidade FROM tb_historico_3 GROUP BY produto_id;',
+                        'SELECT produto_id, SUM(quantidade) as quantidade FROM tb_historico_4 GROUP BY produto_id;',
                         [],
                         (_, { rows }) => resolve(rows._array),
                         (_, error) => reject(error)
@@ -48,7 +48,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'INSERT INTO tb_historico_3 (produto_id, quantidade, venda_id) VALUES (?, ?, ?);',
+                        'INSERT INTO tb_historico_4 (produto_id, quantidade, venda_id) VALUES (?, ?, ?);',
                         [produto_id, quantidade, venda_id],
                         (_, { insertId }) => resolve(insertId),
                         (_, error) => reject(error),
@@ -63,7 +63,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'SELECT * FROM tb_historico_3;',
+                        'SELECT * FROM tb_historico_4;',
                         [],
                         (_, { rows }) => resolve(rows._array),
                         (_, error) => reject(error)
@@ -78,7 +78,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'UPDATE tb_historico_3 SET produto_id = ?, quantidade = ?, venda_id = ? WHERE id = ?;',
+                        'UPDATE tb_historico_4 SET produto_id = ?, quantidade = ?, venda_id = ? WHERE id = ?;',
                         [produto_id, quantidade, venda_id, id],
                         (_, { rowsAffected }) => resolve(rowsAffected),
                         (_, error) => reject(error)
@@ -93,7 +93,7 @@ export default class HistoricoVendas {
             db.transaction(
                 tx => {
                     tx.executeSql(
-                        'DELETE FROM tb_historico_3 WHERE id = ?;',
+                        'DELETE FROM tb_historico_4 WHERE id = ?;',
                         [id],
                         (_, { rowsAffected }) => resolve(rowsAffected),
                         (_, error) => reject(error)
