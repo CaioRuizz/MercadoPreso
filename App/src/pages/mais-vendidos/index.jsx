@@ -31,7 +31,7 @@ export default function MaisVendidos() {
                 const produto = produtos.find(p => p.id === item.produto_id);
                 return {...item, produto};
             }));
-            const ordenado = itensComProduto.sort(x => x.quantidade).reverse();
+            const ordenado = itensComProduto;
             console.log(ordenado)
             setVendas(ordenado);
         }

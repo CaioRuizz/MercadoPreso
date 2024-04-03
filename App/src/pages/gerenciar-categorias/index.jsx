@@ -86,7 +86,7 @@ export default function GerenciarCategorias() {
         data={produtos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Cell text={item.descricao} handleEditar={handleEditar} handleRemover={handleRemover} />
+          <Cell text={item.descricao} handleEditar={handleEditar} handleRemover={handleRemover} item={item} />
         )}
       />
     </View>
