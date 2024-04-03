@@ -115,7 +115,7 @@ export default function GerenciarProdutos() {
         data={produtos}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <Cell text={item.descricao +" - R$ " + (item.precoUnitario ?? item.preco) +" - "+item.categoria} handleEditar={handleEditar} handleRemover={handleRemover} />
+          <Cell text={item.descricao +" - R$ " + (item.precoUnitario ?? item.preco) +" - "+item.categoria} handleEditar={handleEditar} handleRemover={handleRemover} item={item} />
         )}
       />
     </View>

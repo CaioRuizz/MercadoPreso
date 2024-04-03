@@ -2,7 +2,7 @@ import styles from "./styles";
 import {Button, Text, View} from "react-native";
 import React from "react";
 
-export default function Cell ({ text, handleEditar, handleRemover }) {
+export default function Cell ({ text, handleEditar, handleRemover, item }) {
     return (
         <View style={styles.item}>
             <Text>{text}</Text>
