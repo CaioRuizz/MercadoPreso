@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, Button } from 'react-native';
 import Produto from '../../models/produto';
 import CarrinhoItem from '../../models/carrinho-item';
+import ProdutoItem from '../../components/Produto'; 
 
 export default function ListarProdutos() {
     const [produtos, setProdutos] = useState([]);
@@ -41,10 +42,7 @@ export default function ListarProdutos() {
                 data={produtos}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <View>
-                        <Text>{item.descricao} - R$ {item.precoUnitario}</Text>
-                        <Button title="Adicionar ao Carrinho" onPress={() => handleAdicionarAoCarrinho(item).catch(console.log)} />
-                    </View>
+                    <ProdutoItem produto={item} onAddToCart={handleAdicionarAoCarrinho} />
                 )}
             />
         </View>

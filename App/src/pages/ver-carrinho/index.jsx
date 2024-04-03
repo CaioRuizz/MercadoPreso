@@ -72,6 +72,8 @@ export default function Carrinho() {
     const handleFinalizarCompra = async () => {
         const idVenda = Date.now(); // Gerar um ID único para a venda
         await Promise.all(carrinho.map(async (item) => {
+            console.log('Item vendido:' + item);
+
             await HistoricoVendas.adicionar(item.produto_id, item.quantidade, `${idVenda}`);
         }));
         await CarrinhoItem.limpar(); // Limpa o carrinho após finalizar a compra

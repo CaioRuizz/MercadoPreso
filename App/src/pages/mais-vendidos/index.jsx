@@ -25,6 +25,7 @@ export default function MaisVendidos() {
         async function loadVendas() {
             await HistoricoVendas.criarTabela();
             const vendas = await HistoricoVendas.maisVendidos();
+            console.log(vendas);
             const itensComProduto = await Promise.all(vendas.map(async (item) => {
                 const produtos = await Produto.listar();
                 const produto = produtos.find(p => p.id === item.produto_id);

@@ -29,6 +29,7 @@ export default function GerenciarProdutos() {
   const handleAdicionar = async () => {
     if (produtoEditando) {
       const produtoAtualizado = new Produto(produtoEditando.id, descricao, parseFloat(preco.replace(',', '.')), categoria);
+      console.log("Adicionado Produto: "+produtoAtualizado);
       await Produto.atualizar(produtoEditando.id, produtoAtualizado).catch(console.log);
       const index = produtos.findIndex((p) => p.id === produtoEditando.id);
       if (index !== -1) {
