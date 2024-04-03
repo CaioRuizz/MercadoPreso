@@ -25,7 +25,7 @@ export default function MaisVendidos() {
         async function loadVendas() {
             await HistoricoVendas.criarTabela();
             const vendas = await HistoricoVendas.maisVendidos();
-            console.log(vendas);
+            // console.log(vendas);
             const itensComProduto = await Promise.all(vendas.map(async (item) => {
                 const produtos = await Produto.listar();
                 const produto = produtos.find(p => p.id === item.produto_id);
@@ -41,16 +41,19 @@ export default function MaisVendidos() {
 
     let count = 0;
 
+    vendas.forEach(x => console.log(x))
+
     return (
 
         <FlatList
             data={vendas}
             keyExtractor={item => item.produto.descricao}
-            renderItem={({item}) => (
-                <View key={item.produto} style={styles.vendaContainer}>
+            renderItem={({item}) => {
+                console.log(item)
+                return <View key={item.produto} style={styles.vendaContainer}>
                     <Text>Produto: {item.produto.descricao} Quantidade: {item.quantidade}</Text>
                 </View>
-            )}
+            }}
         />
 
     );

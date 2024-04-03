@@ -34,11 +34,11 @@ export default function ListaVendas() {
                 if (!vendasComProdutos[v.venda_id]) {
                     vendasComProdutos[v.venda_id] = [];
                 }
-                console.log('preco: '+v.preco)
-                vendasComProdutos[v.venda_id].push({ produto, quantidade: v.quantidade, preco: v.preco*v.quantidade });
+                console.log(produto)
+                vendasComProdutos[v.venda_id].push({ produto, quantidade: v.quantidade, preco: Math.round(produto.precoUnitario*v.quantidade * 100) / 100 });
             }
 
-            console.log(vendasComProdutos);
+            // console.log(vendasComProdutos);
             setVendas(vendasComProdutos);
         }
         loadVendas();

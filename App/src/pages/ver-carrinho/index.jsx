@@ -10,7 +10,9 @@ export default function Carrinho() {
     useEffect(() => {
         async function loadCarrinho() {
             await HistoricoVendas.criarTabela();
+            console.log('aaaa')
             const itensCarrinho = await CarrinhoItem.listar();
+            console.log(itensCarrinho)
             const itensComProduto = await Promise.all(itensCarrinho.map(async (item) => {
                 const produtos = await Produto.listar();
                 const produto = produtos.find(p => p.id === item.produto_id);
@@ -80,7 +82,6 @@ export default function Carrinho() {
         setCarrinho([]); // Zera o carrinho local
         console.log('Compra finalizada!');
     };
-
     return (
         <View>
             <Text>Carrinho de Compras:</Text>

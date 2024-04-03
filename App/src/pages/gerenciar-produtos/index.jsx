@@ -14,16 +14,17 @@ export default function GerenciarProdutos() {
   const [produtos, setProdutos] = useState([]);
   const [produtoEditando, setProdutoEditando] = useState(null);
 
+  async function loadProdutos() {
+    const categorias = await Categoria.listar();
+    const descricoes = categorias.map(c => c.descricao);
+    setCategorias(descricoes);
+    await Produto.criarTabela().catch(console.log);
+    const produtos = await Produto.listar().catch(console.log);
+    console.log(produtos);
+    setProdutos(produtos);
+  }
+
   useEffect(() => {
-    async function loadProdutos() {
-      const categorias = await Categoria.listar();
-      const descricoes = categorias.map(c => c.descricao);
-      setCategorias(descricoes);
-      await Produto.criarTabela().catch(console.log);
-      const produtos = await Produto.listar().catch(console.log);
-      console.log(produtos);
-      setProdutos(produtos);
-    }
     loadProdutos();
   }, []);
 
@@ -48,6 +49,7 @@ export default function GerenciarProdutos() {
     setDescricao('');
     setPreco('');
     setCategoria(categorias[0]);
+    loadProdutos();
   };
 
   const handleEditar = (produto) => {
